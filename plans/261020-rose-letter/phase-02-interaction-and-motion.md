@@ -3,7 +3,7 @@
 ## Context và trạng thái
 
 - [Plan](./plan.md), [Phase 1](./phase-01-foundation-and-artwork.md).
-- Priority: P2. Status: pending. Phụ thuộc phase 1.
+- Priority: P2. Status: completed. Phụ thuộc phase 1.
 - Không dùng hover để kích hoạt thao tác chính; mọi thao tác chính là button click/tap/Enter/Space.
 
 ## File và contract
@@ -56,11 +56,11 @@ Timing là mốc tinh chỉnh sau khi xem thật. Độ nghiêng hover không t�
 
 ## Checklist
 
-- [ ] Closed/opening/open/closing đúng và lock thao tác tức thời.
-- [ ] Entrance, hover bổ trợ, seal/flap/paper/rose và closing có animation thật.
-- [ ] Một article, normal-flow reading, không nội dung trùng accessible.
-- [ ] Bàn phím, focus, inert, aria, reduced motion và resize giữa transition.
-- [ ] Cleanup animation/listener, không frame loop hoặc timeout rời.
+- [x] Closed/opening/open/closing đúng và lock thao tác tức thời.
+- [x] Entrance, hover bổ trợ, seal/flap/paper/rose và closing có animation thật.
+- [x] Một article, normal-flow reading, không nội dung trùng accessible.
+- [x] Bàn phím, focus, inert, aria, reduced motion và resize giữa transition.
+- [x] Cleanup animation/listener, không frame loop hoặc timeout rời.
 
 ## Acceptance và rủi ro
 

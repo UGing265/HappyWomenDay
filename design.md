@@ -4,8 +4,7 @@
 
 Website lời chúc 20/10 như một món quà mở bằng đường link. Trọng tâm là phong thư tương tác và cành hoa hồng trên nền sáng, hồng nhẹ.
 
-Người dùng đã đồng ý hướng thiết kế dưới đây. Tài liệu ghi nhận thiết kế, chưa phải ứng dụng đã triển khai. Chưa khởi tạo Next.js, chưa deploy.
-
+**Trạng thái hiện tại:** Đã hoàn thành triển khai đầy đủ cả 3 Phase (Foundation & Artwork, Interaction & Motion, Verification & Testing) trên nền tảng Next.js 16.4.2 (React 19, TypeScript), sẵn sàng xuất bản lên GitHub (`https://github.com/UGing265/HappyWomenDay`) và deploy Vercel.
 ## Hướng thiết kế
 
 - Cảm giác: sáng, mềm, thanh lịch, lãng mạn; không hồng chói, không hoạt hình.
@@ -56,16 +55,29 @@ Không dùng nền tối hoặc đỏ rượu làm tông chính.
 - Chữ viết tay chỉ dùng cho tên hoặc chữ ký, không dùng cho toàn bộ lời chúc.
 - Tên font cụ thể chọn khi triển khai; không mặc định dùng lại font trong archive tham khảo.
 
-## Chuyển động và tương tác
+## Chuyển động và tương tác (Triển khai thực tế)
 
-1. **Vào trang:** phong thư và cành hoa hiện dần, bóng đổ mềm; không có loader giả bắt chờ.
-2. **Mở thư:** chạm dấu sáp hoặc nút “Mở thư”; dấu sáp nhấc nhẹ, nắp phong thư mở.
-3. **Hiện giấy:** giấy thư trượt lên; phong thư hạ xuống, hoa dịch sang bên.
-4. **Đọc thư:** nội dung ổn định, không chạy chữ liên tục; cho phép cuộn tự nhiên nếu thư dài.
-5. **Gấp thư:** nút “Gấp thư lại” đưa giao diện về trạng thái đóng; có thể mở lại.
+Hệ thống chuyển động được xây dựng bằng **Web Animations API (WAAPI)** nguyên bản kết hợp kỹ thuật **FLIP (First, Last, Invert, Play)**, không phụ thuộc thư viện bên ngoài nặng nề.
 
-Không để thao tác bấm liên tiếp làm chồng animation hoặc kẹt giữa các trạng thái.
+1. **Vào trang (Entrance):** Phong thư, cành hoa hồng và dấu sáp xuất hiện nhẹ nhàng với hiệu ứng fade-in và scale mềm mại; không dùng loader giả.
+2. **Mở thư (FLIP Forward Lifecycle):**
+   - Giai đoạn chuẩn bị (`phase: "opening"`): Khóa tương tác lặp (`actionIdRef` + `phaseRef`), hủy animation cũ (`cancelAllAnimations`).
+   - Dấu sáp nhấc nhẹ và nắp phong thư lật mở (WAAPI `rotateX(-180deg)` kết hợp `perspective(1000px)` và dynamic `z-index`).
+   - Kỹ thuật FLIP: Đo đạc vị trí khởi điểm (First) của giấy thư nằm gọn trong bao thư và vị trí đích (Last) khi giấy bung ra ngoài.
+   - Chuyển động đảo ngược (Invert): Áp dụng biến đổi nghịch đảo và chạy chuyển động phát lại (Play) mượt mà với đường cong gia tốc mềm (`cubic-bezier(0.22, 1, 0.36, 1)`).
+   - Đồng thời phong thư hạ thấp độ cao, cành hoa hồng lùi sang bên làm nền phụ.
+   - Chuyển sang trạng thái `phase: "open"`: Bỏ `inert`, kích hoạt `aria-hidden="false"`, và chuyển focus tự nhiên vào tiêu đề bức thư (`letterHeadingRef`).
+3. **Đọc thư:** Giấy thư hiển thị trang trọng, hỗ trợ cuộn trang tự nhiên nếu màn hình nhỏ; không bị giới hạn trong khung cuộn con; nội dung đọc rõ ràng chuẩn WCAG AA.
+4. **Gấp thư (FLIP Reverse Lifecycle):**
+   - Bấm nút "Gấp thư lại" kích hoạt `phase: "closing"`.
+   - Giấy thư thu gọn và trượt êm ái ngược về lòng bao thư, phong thư nâng lên vị trí trung tâm, hoa hồng trở lại vị trí ban đầu.
+   - Nắp thư lật đóng lại hoàn chỉnh, dấu sáp niêm phong trở lại.
+   - Chuyển sang `phase: "closed"`, hoàn trả focus về nút "Mở thư".
 
+### Xử lý Prefers-Reduced-Motion
+- Kiểm tra trực tiếp qua media query `(prefers-reduced-motion: reduce)`.
+- Khi người dùng bật tính năng giảm chuyển động: Toàn bộ quá trình chuyển đổi giữa Đóng và Mở diễn ra tức thì (0ms duration), bỏ qua chuỗi WAAPI/FLIP, nhưng vẫn cập nhật chính xác thuộc tính trợ năng (`inert`, `aria-hidden`) và quản lý focus đầy đủ.
+- Chống chồng chéo chuyển động (Race Condition): Mọi chuỗi animation đều có mã định danh `actionId` và dọn dẹp (cleanup) animation qua ref khi unmount hoặc ngắt đột ngột.
 ### Tiết chế hiệu ứng
 
 - Ưu tiên chuyển động giấy, nếp gấp và ánh sáng.

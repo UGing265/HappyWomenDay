@@ -3,7 +3,7 @@
 ## Context và trạng thái
 
 - [Plan](./plan.md), [Design](../../design.md).
-- Priority: P2. Status: pending. Không có blocker từ plan khác.
+- Priority: P2. Status: completed. Không có blocker từ plan khác.
 - Thư mục gốc đã có tài liệu. Không chạy generator ghi đè root hoặc xóa `docs/materials/`.
 
 ## Yêu cầu và kiến trúc
@@ -58,10 +58,10 @@ Chúc những điều bà mong sớm thành hiện thực, những dự định 
 
 ## Checklist
 
-- [ ] Cấu hình app và lockfile, không đụng archive/tài liệu cũ.
-- [ ] Server route, content module, client scene và typography tiếng Việt.
-- [ ] Artwork hoa hồng hoàn chỉnh, phong thư đủ layer.
-- [ ] Hai bố cục đóng/đọc, desktop và điện thoại.
+- [x] Cấu hình app và lockfile, không đụng archive/tài liệu cũ.
+- [x] Server route, content module, client scene và typography tiếng Việt.
+- [x] Artwork hoa hồng hoàn chỉnh, phong thư đủ layer.
+- [x] Hai bố cục đóng/đọc, desktop và điện thoại.
 
 ## Acceptance và rủi ro
 

@@ -3,7 +3,7 @@
 ## Context và trạng thái
 
 - [Plan](./plan.md), [Phase 2](./phase-02-interaction-and-motion.md).
-- Priority: P2. Status: pending. Phụ thuộc phase 2.
+- Priority: P2. Status: completed. Phụ thuộc phase 2.
 - Repo đích người dùng cung cấp: https://github.com/UGing265/HappyWomenDay.
 - Kiểm tra thật bằng browser là bắt buộc. Build hoặc unit test không chứng minh được chất lượng mở thư.
 
@@ -54,12 +54,12 @@ Project root: `D:/AShiroru/ProgramCode/Project/Personal/HappyWomenDay/`.
 
 ## Checklist
 
-- [ ] Lint/typecheck/production build đạt với output đã quan sát.
-- [ ] Production app mở/gấp/mở lại và đọc thư được trên desktop/mobile.
-- [ ] Rapid input, keyboard, focus, reduced motion và resize đạt.
-- [ ] Screenshot chứng minh closed/open; console không có lỗi app chưa xử lý.
-- [ ] README/design và toàn bộ phase status đồng bộ đúng thực tế.
-- [ ] Hướng dẫn Vercel trỏ đúng repo; chỉ ghi deployed khi thực sự có bằng chứng.
+- [x] Lint/typecheck/production build đạt với output đã quan sát.
+- [x] Production app mở/gấp/mở lại và đọc thư được trên desktop/mobile.
+- [x] Rapid input, keyboard, focus, reduced motion và resize đạt.
+- [x] Screenshot chứng minh closed/open; console không có lỗi app chưa xử lý.
+- [x] README/design và toàn bộ phase status đồng bộ đúng thực tế.
+- [x] Hướng dẫn Vercel trỏ đúng repo; chỉ ghi deployed khi thực sự có bằng chứng.
 
 ## Rủi ro và bảo mật
 

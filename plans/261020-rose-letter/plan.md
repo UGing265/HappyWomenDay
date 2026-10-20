@@ -1,7 +1,7 @@
 ---
 title: "Happy Women’s Day — Hoa hồng & thiệp thư"
 description: "Dựng website nền sáng–hồng với hoa hồng, phong thư mở/gấp có animation và lời chúc dành cho bạn thân."
-status: pending
+status: completed
 priority: P2
 tags: [feature, frontend]
 blockedBy: []
@@ -38,9 +38,9 @@ Trạng thái: **chỉ lập kế hoạch, chưa triển khai**. Chọn fast pla
 
 | Phase | Name | Status |
 | --- | --- | --- |
-| 1 | [Khởi tạo Next.js và giao diện tĩnh](./phase-01-foundation-and-artwork.md) | Pending |
-| 2 | [Animation mở/gấp và khả năng tiếp cận](./phase-02-interaction-and-motion.md) | Pending |
-| 3 | [Kiểm tra thực tế và chuẩn bị Vercel](./phase-03-verification-and-handoff.md) | Pending |
+| 1 | [Khởi tạo Next.js và giao diện tĩnh](./phase-01-foundation-and-artwork.md) | Completed |
+| 2 | [Animation mở/gấp và khả năng tiếp cận](./phase-02-interaction-and-motion.md) | Completed |
+| 3 | [Kiểm tra thực tế và chuẩn bị Vercel](./phase-03-verification-and-handoff.md) | Completed |
 
 ## Hoàn thành khi
 
